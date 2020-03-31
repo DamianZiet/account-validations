@@ -4,17 +4,26 @@
     padding: 0;
     margin: 0;
 }
-.container {
-    background-color: white;
+@mixin conainers(){
     width: 100vw;
     height: 100vh;
-    background-image: url(/imagines/stars.jpg);
     background-repeat:no-repeat;
     background-position: center center;
     background-size: cover;
     overflow: hidden;
+    position: absolute;
+    margin: auto;
+    top: 200%; 
+    left: 0; 
+    bottom: 0;
+    right: 0;
+}
+.container {
+    @include conainers();
+    background-image: url(/imagines/ice.jpg);
+    top: 0; 
     .header {
-        background-color: rgb(247, 247, 247);
+      background-color: rgb(247, 247, 247);
       padding:  20px 40px;
       position: relative;
       z-index: 1;
@@ -68,7 +77,6 @@
                 outline: none;
                  box-shadow: 2px 2px 2px blue;
                 }
-                
             }
             i{
                 position: absolute;
@@ -125,24 +133,47 @@
         } 
     }  
 }
+.containerTwo {
+  @include conainers();
+    background-image: url(/imagines/sea.jpg);
+    top: 200%; 
+    img{
+        height: 100%;
+        width: 100%
+        }
+    }  
 @media (orientation: portrait) and (min-width:768px){
+
     body {
         height: 100vh;
-        background-image: url(/imagines/stars.jpg);
         background-repeat:no-repeat;
         background-size: cover;
         background-position: center;
-    }
-    .container {
-        background-size: auto 200%;
-        border-radius: 5px;
-        box-shadow:  0 2px 5px blue;
+    };
+    .bigContainer{
         width: 50vw;
         height: 65vh;
         position: absolute;
         top:50%;
         left:50%;
+              transform: translate(-50%,-50%);
+              overflow: hidden;
+        border-radius: 5px;
+        box-shadow:  0 2px 5px blue;
+    }
+
+    @mixin containerPortrait(){
+         width: 50vw;
+        height: 65vh;
+        position: absolute;
+    }
+    .container {
+        @include containerPortrait()
+        top:100%;
+        left:50%;
         transform: translate(-50%,-50%);
+          z-index: 1;
+        box-shadow: 2px 2px 51px 34px #023f5c;
             .form{
             flex-direction: row;
             flex-wrap: wrap;
@@ -159,11 +190,17 @@
             }
         }
     }
+    .containerTwo {
+    width: 50vw;
+    height: 65vh;
+    position: absolute;
+    top: 200%; 
+    left: 0; 
+    bottom: 0;
+    }
 }
 @media (orientation: portrait) and (min-width:1024px){
     .container{
-        height: 50vh;
-        background-size: auto 400%;
         .form {
             padding-bottom: 80px;
                 .btn{
@@ -172,9 +209,10 @@
         }
     }
 }
-
 @media (orientation: landscape) {
     .container{ 
+        z-index: 1;
+        box-shadow: 2px 2px 51px 34px #023f5c;
         .rotate{
             img{
                 width: 20vw;
@@ -193,27 +231,53 @@
             }
         }
     }
+            .containerTwo{
+            img{
+            height: 100%;
+            width: 100%
+            }
+        }
 }
 @media(orientation: landscape) and (min-width:1024px){
     body {
-        height: 100vh;
-        background-image: url(/imagines/stars.jpg);
+        height:100vh;
         background-repeat:no-repeat;
         background-size: cover;
         background-position: center;
     }
-    .container {
-        background-size: auto 400%;
-        border-radius: 5px;
-        box-shadow:  0 2px 5px blue;
+    .bigContainer{
         width: 50vw;
         height: 65vh;
         position: absolute;
         top:50%;
         left:50%;
+              transform: translate(-50%,-50%);
+              overflow: hidden;
+        border-radius: 5px;
+        box-shadow:  0 2px 5px blue;
+    }
+    .container {
+        width: 50vw;
+        height: 65vh;
+        position: absolute;
+        top:100%;
+        left:50%;
         transform: translate(-50%,-50%);
             .form{
             height:75%;
+            .btn{
+                button{
+                    width: 75%;
+                }
+            }
         }
     }
+    .containerTwo{
+        width: 50vw;
+        height: 65vh;
+        position: absolute;
+        top:300%;
+        left:50%;
+        transform: translate(-50%,-50%);  
+        }
 }
