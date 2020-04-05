@@ -16,12 +16,14 @@
     top: 200%; 
     left: 0; 
     bottom: 0;
-    right: 0;
 }
 .container {
     @include conainers();
     background-image: url(/imagines/ice.jpg);
     top: 0; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     .header {
       background-color: rgb(247, 247, 247);
       padding:  20px 40px;
@@ -52,19 +54,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
+    padding-top: 10px;
     overflow: hidden;
     position: relative;
     color: white;
         .form-control{
-        padding-bottom: 10px;
-        margin-top: 10px;
+        
         position: relative;
         width: 80%;
+        padding-bottom: 18px;
+        margin-top: 5px;
             label {
                 display: inline-block;
                 margin-bottom: 5px;
                 letter-spacing: .5px;
+                color: black
             }
             input {
                 border: 2px solid black;
@@ -84,11 +88,12 @@
                 right: 10px;
                 visibility: hidden;
             }
-             small {
+             errorText {
                 visibility: hidden;
                 position: absolute;
                 bottom: 0px;
-                left: 0px;
+                color: red ;
+                height: 30%
             }
         }  
         .form-control.success input{
@@ -106,12 +111,14 @@
             color: red;
             visibility: visible;
         }
-        .form-control.error small {
-            color: red;
+        .form-control.error errorText {
             visibility: visible;
+            font-size: 12px;
+            font-weight: bold;
+            padding-top: 5px;
+            color: red;
         }
         .btn {
-            padding-top: 10px;
             button {
                 display: block;
                 background-color:  black;
@@ -156,23 +163,20 @@
         position: absolute;
         top:50%;
         left:50%;
-              transform: translate(-50%,-50%);
-              overflow: hidden;
+        transform: translate(-50%,-50%);
+        overflow: hidden;
         border-radius: 5px;
         box-shadow:  0 2px 5px blue;
     }
 
     @mixin containerPortrait(){
-         width: 50vw;
-        height: 65vh;
+         width: 100%;
+        height: 100%;
         position: absolute;
     }
     .container {
-        @include containerPortrait()
-        top:100%;
-        left:50%;
-        transform: translate(-50%,-50%);
-          z-index: 1;
+        @include containerPortrait();
+        z-index: 1;
         box-shadow: 2px 2px 51px 34px #023f5c;
             .form{
             flex-direction: row;
@@ -191,9 +195,7 @@
         }
     }
     .containerTwo {
-    width: 50vw;
-    height: 65vh;
-    position: absolute;
+     @include containerPortrait();
     top: 200%; 
     left: 0; 
     bottom: 0;
@@ -224,8 +226,12 @@
         flex-wrap: wrap;
             .form-control{
             width: 40%;
-            margin: 0 12px;
+            margin: 2px 12px;
+            padding-bottom: 20px
             }
+            .form-control.error errorText {
+            padding-top: 2px;
+        }
             .btn{
             width: 30%;
             }
@@ -246,8 +252,8 @@
         background-position: center;
     }
     .bigContainer{
-        width: 50vw;
-        height: 65vh;
+        width: 45vw;
+        height: 55vh;
         position: absolute;
         top:50%;
         left:50%;
@@ -257,12 +263,8 @@
         box-shadow:  0 2px 5px blue;
     }
     .container {
-        width: 50vw;
-        height: 65vh;
-        position: absolute;
-        top:100%;
-        left:50%;
-        transform: translate(-50%,-50%);
+        width: 100%;
+        height: 100%;
             .form{
             height:75%;
             .btn{
@@ -273,11 +275,8 @@
         }
     }
     .containerTwo{
-        width: 50vw;
-        height: 65vh;
+         width: 100%;
+        height: 100%;
         position: absolute;
-        top:300%;
-        left:50%;
-        transform: translate(-50%,-50%);  
         }
 }
